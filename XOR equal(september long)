@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+/////////////////////////////////////////////////////////////////
+#define testcase                int t;cin>>t;while(t--)
+#define ll                      long long int
+#define pl                      pair<ll,ll>
+#define forl(i,a,b)             for(ll i=a;i<b;i++) 
+#define vect                    vector<int>
+#define vectl                   vector<ll>
+#define vectp                   vector<pl>
+#define sortarr(a,n)            sort(a,a+n)
+#define ascen(v)                sort(v.begin(),v.end())
+#define descen(v)               sort(v.rbegin(),v.rend())
+#define fastnfurious            ios::sync_with_stdio(0);cin.tie(0);
+#define puba                    push_back    
+/////////////////////////////////////////////////////////////////
+
+void kaam()
+{
+   ll n,x;
+   cin>>n>>x;
+   ll arr[n];
+   map<ll,ll> m,o;
+   vector<ll> v;
+   forl(i,0,n)
+   {
+       ll a;
+       cin>>a;
+       v.puba(a);
+       m[a]++;
+   }
+   
+   
+   ll maxi=0,mini=1e18,count=0;
+   for(ll i:v)
+   {
+     if((i!=i^x)&& maxi<m[i]+m[i^x])
+     {
+         maxi=m[i]+m[i^x];
+         count=m[i^x];
+     }
+     else if((i!=i^x)&& maxi==m[i]+m[i^x] && count>m[i^x])
+     {
+         maxi=m[i]+m[i^x]; count=m[i^x];
+     }
+     else if(maxi<m[i])
+     {
+         maxi=m[i];
+         count=0;
+     }
+   }
+   cout<<maxi<<" "<<count<<endl;
+}
+int main()
+{   
+    fastnfurious
+    testcase
+     kaam();	
+	return 0;
+}
